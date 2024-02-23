@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace ChessGPT.PL.Entities
 {
-    internal class tblGame : IEntity
+    public class tblGame : IEntity
     {
         public Guid Id { get; set; }
         public string GameName { get; set; }
         public DateTime GameTime { get; set; }
         public string GameBoard {  get; set; }
-        public string GameState { get; set; }
+        public char GameState { get; set; }
+
+        public virtual ICollection<tblUserGame> UserGames { get; set; } 
     }
 }

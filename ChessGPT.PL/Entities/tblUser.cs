@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ChessGPT.PL.Entities
 {
-    internal class tblUser : IEntity
+    public class tblUser : IEntity
     {
         public Guid Id { get; set; }
         public string UserName { get; set; }
@@ -15,5 +15,6 @@ namespace ChessGPT.PL.Entities
         public string LastName { get; set; }
         public bool IsComputer { get; set; }
 
+        public virtual ICollection<tblUserGame> UserGames { get; set; }
     }
 }
