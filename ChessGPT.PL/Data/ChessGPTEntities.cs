@@ -9,7 +9,7 @@ using Microsoft.SqlServer.Server;
 
 namespace ChessGPT.PL.Data
 {
-    public class ChatGPTEntities : DbContext
+    public class ChessGPTEntities : DbContext
     {
         Guid[] userId = new Guid[2];
         Guid[] gameId = new Guid[2];
@@ -19,7 +19,7 @@ namespace ChessGPT.PL.Data
         public DbSet<tblGame> tblGames { get; set; }
         public DbSet<tblUserGame> tblUserGames { get; set; }
 
-        public ChatGPTEntities(DbContextOptions<ChatGPTEntities> options) : base(options)
+        public ChessGPTEntities(DbContextOptions<ChessGPTEntities> options) : base(options)
         {
 
 
@@ -28,7 +28,7 @@ namespace ChessGPT.PL.Data
         {
         }
 
-        public ChatGPTEntities()
+        public ChessGPTEntities()
         {
         }
 
