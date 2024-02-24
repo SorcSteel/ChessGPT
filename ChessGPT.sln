@@ -5,7 +5,9 @@ VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChessGPT.PL", "ChessGPT.PL\ChessGPT.PL.csproj", "{6E3FEFFC-A320-4855-82AD-93D77B306736}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChessGPT.PL.Test", "ChessGPT.PL.Test\ChessGPT.PL.Test.csproj", "{DBFC8B9D-437F-4F5D-87BB-7FCF20E98500}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChessGPT.PL.Test", "ChessGPT.PL.Test\ChessGPT.PL.Test.csproj", "{DBFC8B9D-437F-4F5D-87BB-7FCF20E98500}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChessGPT.MigrationHandler", "ChessGPT.MigrationHandler\ChessGPT.MigrationHandler.csproj", "{611E7436-B8A3-466D-B884-0DBF2453C40C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{DBFC8B9D-437F-4F5D-87BB-7FCF20E98500}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBFC8B9D-437F-4F5D-87BB-7FCF20E98500}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBFC8B9D-437F-4F5D-87BB-7FCF20E98500}.Release|Any CPU.Build.0 = Release|Any CPU
+		{611E7436-B8A3-466D-B884-0DBF2453C40C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{611E7436-B8A3-466D-B884-0DBF2453C40C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{611E7436-B8A3-466D-B884-0DBF2453C40C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{611E7436-B8A3-466D-B884-0DBF2453C40C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
