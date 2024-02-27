@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ChessGPT.PL.Entities
+namespace ChessGPT.BL.Models
 {
-    public class tblGame : IEntity
+    internal class Game
     {
         public Guid Id { get; set; }
         public string GameName { get; set; }
         public DateTime GameTime { get; set; }
-        public string GameBoard {  get; set; }
+        public string GameBoard { get; set; }
         public char GameState { get; set; }
     }
 }

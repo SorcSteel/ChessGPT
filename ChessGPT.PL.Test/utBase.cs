@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace ChessGPT.PL.Test
 {
     [TestClass]
-    internal class utBase<T> where T : class
+    public class utBase<T> where T : class
     {
-        protected ChessGPTEntities dc;  // declare the DataContext
+        protected ChessGPTEntities dc;
         protected IDbContextTransaction transaction;
         private IConfigurationRoot _configuration;
         private DbContextOptions<ChessGPTEntities> options;

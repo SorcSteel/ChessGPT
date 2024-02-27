@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ChessGPT.PL.Entities
+namespace ChessGPT.BL.Models
 {
-    public class tblUserGame : IEntity
+    internal class UserGame
     {
         public Guid Id { get; set; }
         public Guid UserId { get; set; }

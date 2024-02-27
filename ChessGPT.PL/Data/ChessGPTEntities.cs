@@ -11,21 +11,21 @@ namespace ChessGPT.PL.Data
 {
     public class ChessGPTEntities : DbContext
     {
-        Guid[] userId = new Guid[2];
-        Guid[] gameId = new Guid[2];
-        Guid[] userGameId = new Guid[5];
+        Guid[] userId = new Guid[3];
+        Guid[] gameId = new Guid[3];
+        Guid[] userGameId = new Guid[6];
 
-        public DbSet<tblUser> tblUsers {  get; set; }
+        public DbSet<tblUser> tblUsers { get; set; }
         public DbSet<tblGame> tblGames { get; set; }
         public DbSet<tblUserGame> tblUserGames { get; set; }
 
         public ChessGPTEntities(DbContextOptions<ChessGPTEntities> options) : base(options)
         {
-
-
         }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+
         }
 
         public ChessGPTEntities()
@@ -50,6 +50,7 @@ namespace ChessGPT.PL.Data
 
             modelBuilder.Entity<tblUser>(entity =>
             {
+
                 entity.HasKey(e => e.Id).HasName("PK_tblUser_Id");
 
                 entity.ToTable("tblUser");
@@ -59,19 +60,16 @@ namespace ChessGPT.PL.Data
                 entity.Property(e => e.LastName);
                 entity.Property(e => e.UserName);
                 entity.Property(e => e.Password);
-                entity.Property(e => e.IsComputer)
-                    .IsRequired()
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
+                entity.Property(e => e.IsComputer);
             });
 
             List<tblUser> Users = new List<tblUser>
             {
-                new tblUser {Id = userId[0], FirstName = "Kaiden", LastName = "Brunke", UserName = "700233885", Password = "password", IsComputer = false},
+                new tblUser {Id = userId[0], FirstName = "Kaiden", LastName = "Brunke", UserName = "700233885", Password = GetHash("password"), IsComputer = false},
 
-                new tblUser {Id = userId[1], FirstName = "Logan", LastName = "Vang", UserName = "500201348", Password = "password", IsComputer = false},
+                new tblUser {Id = userId[1], FirstName = "Logan", LastName = "Vang", UserName = "500201348", Password = GetHash("password"), IsComputer = false},
 
-                new tblUser {Id = userId[2], FirstName = "AI", LastName = "Robot", UserName = "Robot", Password = "password", IsComputer = true},
+                new tblUser {Id = userId[2], FirstName = "AI", LastName = "Robot", UserName = "Robot", Password = GetHash("password"), IsComputer = true},
             };
             modelBuilder.Entity<tblUser>().HasData(Users);
         }
@@ -79,11 +77,12 @@ namespace ChessGPT.PL.Data
         private void CreateGames(ModelBuilder modelBuilder)
         {
             for (int i = 0; i < userId.Length; i++)
-                userId[i] = Guid.NewGuid();
+                gameId[i] = Guid.NewGuid();
 
 
             modelBuilder.Entity<tblGame>(entity =>
             {
+
                 entity.HasKey(e => e.Id).HasName("PK_tblGame_Id");
 
                 entity.ToTable("tblGame");
@@ -92,10 +91,7 @@ namespace ChessGPT.PL.Data
                 entity.Property(e => e.GameName);
                 entity.Property(e => e.GameTime);
                 entity.Property(e => e.GameBoard);
-                entity.Property(e => e.GameState)
-                    .IsRequired()
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
+                entity.Property(e => e.GameState);
             });
 
             List<tblGame> Games = new List<tblGame>
@@ -117,6 +113,7 @@ namespace ChessGPT.PL.Data
 
             modelBuilder.Entity<tblUserGame>(entity =>
             {
+
                 entity.HasKey(e => e.Id).HasName("PK_tblUserGame_Id");
 
                 entity.ToTable("tblUserGame");
@@ -124,22 +121,7 @@ namespace ChessGPT.PL.Data
                 entity.Property(e => e.Id).ValueGeneratedNever();
                 entity.Property(e => e.UserId);
                 entity.Property(e => e.GameId);
-                entity.Property(e => e.Color)
-                    .IsRequired()
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.HasOne(d => d.User)
-                  .WithMany(p => p.UserGames)
-                  .HasForeignKey(d => d.UserId)
-                  .OnDelete(DeleteBehavior.ClientSetNull)
-                  .HasConstraintName("fk_tblUserGame_UserId");
-
-                entity.HasOne(d => d.Game)
-                  .WithMany(p => p.UserGames)
-                  .HasForeignKey(d => d.GameId)
-                  .OnDelete(DeleteBehavior.ClientSetNull)
-                  .HasConstraintName("fk_tblUserGame_GameId");
+                entity.Property(e => e.Color);
             });
 
             List<tblUserGame> UserGames = new List<tblUserGame>
@@ -154,7 +136,7 @@ namespace ChessGPT.PL.Data
 
                 new tblUserGame {Id = userGameId[4], UserId = userId[2], GameId = gameId[2], Color = 'w'},
 
-                new tblUserGame {Id = userGameId[5], UserId = userId[0], GameId = gameId[2], Color = 'w'},
+                new tblUserGame {Id = userGameId[5], UserId = userId[0], GameId = gameId[2], Color = 'b'},
             };
             modelBuilder.Entity<tblUserGame>().HasData(UserGames);
         }

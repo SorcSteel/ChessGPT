@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace ChessGPT.PL.Test
 {
     [TestClass]
-    internal class utUser : utBase<tblUser>
+    public class utUser : utBase<tblUser>
     {
         [TestMethod]
         public void LoadTest()
