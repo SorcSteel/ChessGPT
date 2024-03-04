@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ChessGPT.BL.Models
 {
-    internal class Game
+    public class Game
     {
         public Guid Id { get; set; }
         public string GameName { get; set; }
