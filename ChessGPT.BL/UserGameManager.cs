@@ -4,29 +4,27 @@ using ChessGPT.PL.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 
+
 namespace ChessGPT.BL
 {
-    internal class GameManager : GenericManager<tblGame>
+    internal class UserGameManager : GenericManager<tblUserGame>
     {
-        public GameManager(DbContextOptions<ChessGPTEntities> options) : base(options) { }
+        public UserGameManager(DbContextOptions<ChessGPTEntities> options) : base(options) { }
 
-
-
-        public List<Game> Load()
+        public List<UserGame> Load()
         {
 
             try
             {
-                List<Game> rows = new List<Game>();
+                List<UserGame> rows = new List<UserGame>();
                 base.Load()
                     .ForEach(d => rows.Add(
-                        new Game
+                        new UserGame
                         {
                             Id = d.Id,
-                            GameName = d.GameName,
-                            GameTime = d.GameTime,
-                            GameBoard = d.GameBoard,
-                            GameState = d.GameState
+                            UserId = d.Id,
+                            GameId = d.GameId,
+                            Color = d.Color,
                         }));
 
                 return rows;
@@ -39,25 +37,23 @@ namespace ChessGPT.BL
 
         }
 
-
-        public Game LoadById(Guid id)
+        public UserGame LoadById(Guid id)
         {
             try
             {
-                tblGame row = base.LoadById(id);
+                tblUserGame row = base.LoadById(id);
 
                 if (row != null)
                 {
-                    Game game = new Game
+                    UserGame userGame = new UserGame
                     {
                         Id = row.Id,
-                        GameName = row.GameName,
-                        GameTime = row.GameTime,
-                        GameBoard = row.GameBoard,
-                        GameState = row.GameState
+                        UserId = row.UserId,
+                        GameId = row.GameId,
+                        Color = row.Color,
                     };
 
-                    return game;
+                    return userGame;
                 }
                 else
                 {
@@ -72,12 +68,12 @@ namespace ChessGPT.BL
             }
         }
 
-        public int Insert(Game game, bool rollback = false)
+        public int Insert(User user, Game game, char color, bool rollback = false)
         {
             try
             {
-                tblGame row = new tblGame { GameName = game.GameName, GameTime = game.GameTime, GameBoard = game.GameBoard, GameState = game.GameState };
-                game.Id = row.Id;
+                tblUserGame row = new tblUserGame { UserId = user.Id, GameId = game.Id, Color = color };
+                //TODO: Get ID to work
                 return base.Insert(row, rollback);
 
             }
@@ -88,17 +84,16 @@ namespace ChessGPT.BL
             }
         }
 
-        public int Update(Game game, bool rollback = false)
+        public int Update(Game game, User user, char color, bool rollback = false)
         {
             try
             {
-                int results = base.Update(new tblGame
+                int results = base.Update(new tblUserGame
                 {
-                    Id = game.Id,
-                    GameName = game.GameName,
-                    GameTime = game.GameTime,
-                    GameBoard = game.GameBoard,
-                    GameState = game.GameState
+                    //TODO: Figure out how to work ID
+                    UserId = user.Id,
+                    GameId = game.Id,
+                    Color = color
                 }, rollback);
                 return results;
             }
@@ -107,7 +102,6 @@ namespace ChessGPT.BL
                 throw;
             }
         }
-
         public int Delete(Guid id, bool rollback = false)
         {
             try
@@ -120,5 +114,6 @@ namespace ChessGPT.BL
                 throw;
             }
         }
+
     }
 }
