@@ -68,37 +68,18 @@ namespace ChessGPT.BL
             }
         }
 
-        public int Insert(User user, Game game, char color, bool rollback = false)
+        public int Insert(User user, Game game, UserGame userGame, char color, bool rollback = false)
         {
             try
             {
                 tblUserGame row = new tblUserGame { UserId = user.Id, GameId = game.Id, Color = color };
-                //TODO: Get ID to work
+                userGame.Id = row.id;
                 return base.Insert(row, rollback);
 
             }
             catch (Exception)
             {
 
-                throw;
-            }
-        }
-
-        public int Update(Game game, User user, char color, bool rollback = false)
-        {
-            try
-            {
-                int results = base.Update(new tblUserGame
-                {
-                    //TODO: Figure out how to work ID
-                    UserId = user.Id,
-                    GameId = game.Id,
-                    Color = color
-                }, rollback);
-                return results;
-            }
-            catch (Exception)
-            {
                 throw;
             }
         }
