@@ -56,6 +56,16 @@ namespace ChessGPT.PL.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_tblUserGame_Id", x => x.Id);
+                    table.ForeignKey(
+                        name: "fk_tblUserGame_GameId",
+                        column: x => x.GameId,
+                        principalTable: "tblGame",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "fk_tblUserGame_UserId",
+                        column: x => x.UserId,
+                        principalTable: "tblUser",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.InsertData(
@@ -63,9 +73,9 @@ namespace ChessGPT.PL.Migrations
                 columns: new[] { "Id", "GameBoard", "GameName", "GameState", "GameTime" },
                 values: new object[,]
                 {
-                    { new Guid("3ba2a104-25c2-408f-ab57-306137019512"), "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w", "First Game", "o", new DateTime(2024, 2, 26, 17, 46, 37, 834, DateTimeKind.Local).AddTicks(7727) },
-                    { new Guid("5fab0ecc-8d69-4958-8ccb-540198d5c73c"), "rnbqkbnr/pp1ppppp/8/2p5/4P3/5N2/PPPP1PPP/RNBQKB1R b", "Second Game", "o", new DateTime(2024, 2, 26, 17, 46, 37, 834, DateTimeKind.Local).AddTicks(7772) },
-                    { new Guid("8a9068dd-8e12-4203-819f-a21943fb0deb"), "4K3/4p3/Bk1p4/b4rP1/2R3p1/P3PP2/P3N3/5r2 w", "Third Game", "o", new DateTime(2024, 2, 26, 17, 46, 37, 834, DateTimeKind.Local).AddTicks(7774) }
+                    { new Guid("96349c24-a518-4487-a6ff-a2429ecf2576"), "rnbqkbnr/pp1ppppp/8/2p5/4P3/5N2/PPPP1PPP/RNBQKB1R b", "Second Game", "o", new DateTime(2024, 3, 5, 23, 41, 29, 82, DateTimeKind.Local).AddTicks(5616) },
+                    { new Guid("d5e0db1c-85a1-4160-9bb7-4c28db12bf11"), "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w", "First Game", "o", new DateTime(2024, 3, 5, 23, 41, 29, 82, DateTimeKind.Local).AddTicks(5573) },
+                    { new Guid("fcd90fc6-ddf3-44d5-acda-c2c420e0a087"), "4K3/4p3/Bk1p4/b4rP1/2R3p1/P3PP2/P3N3/5r2 w", "Third Game", "o", new DateTime(2024, 3, 5, 23, 41, 29, 82, DateTimeKind.Local).AddTicks(5617) }
                 });
 
             migrationBuilder.InsertData(
@@ -73,9 +83,9 @@ namespace ChessGPT.PL.Migrations
                 columns: new[] { "Id", "FirstName", "IsComputer", "LastName", "Password", "UserName" },
                 values: new object[,]
                 {
-                    { new Guid("3bfd9f6f-0f8e-4050-be90-77bbd01fff59"), "Logan", false, "Vang", "W6ph5Mm5Pz8GgiULbPgzG37mj9g=", "500201348" },
-                    { new Guid("8c2cca4b-4a90-4f52-9275-1ee96c77f6ab"), "Kaiden", false, "Brunke", "W6ph5Mm5Pz8GgiULbPgzG37mj9g=", "700233885" },
-                    { new Guid("c1cb0628-b919-4297-a5bd-f86d1d9e3160"), "AI", true, "Robot", "W6ph5Mm5Pz8GgiULbPgzG37mj9g=", "Robot" }
+                    { new Guid("1ce9a108-70e3-4c1c-a89c-4731713698a8"), "AI", true, "Robot", "W6ph5Mm5Pz8GgiULbPgzG37mj9g=", "Robot" },
+                    { new Guid("4882ba82-2809-4f40-848d-5230a1d398de"), "Kaiden", false, "Brunke", "W6ph5Mm5Pz8GgiULbPgzG37mj9g=", "700233885" },
+                    { new Guid("93c75571-43c9-4085-8736-e55b02df011b"), "Logan", false, "Vang", "W6ph5Mm5Pz8GgiULbPgzG37mj9g=", "500201348" }
                 });
 
             migrationBuilder.InsertData(
@@ -83,26 +93,36 @@ namespace ChessGPT.PL.Migrations
                 columns: new[] { "Id", "Color", "GameId", "UserId" },
                 values: new object[,]
                 {
-                    { new Guid("0a3d230b-e8f2-4c32-bdc9-ef1d223fd0ce"), "b", new Guid("3ba2a104-25c2-408f-ab57-306137019512"), new Guid("3bfd9f6f-0f8e-4050-be90-77bbd01fff59") },
-                    { new Guid("4cbde8b9-24ec-49a9-97c9-7f770982c03b"), "b", new Guid("5fab0ecc-8d69-4958-8ccb-540198d5c73c"), new Guid("8c2cca4b-4a90-4f52-9275-1ee96c77f6ab") },
-                    { new Guid("6ea4a8b8-2540-4640-89bb-dbcd9f6b3745"), "b", new Guid("8a9068dd-8e12-4203-819f-a21943fb0deb"), new Guid("8c2cca4b-4a90-4f52-9275-1ee96c77f6ab") },
-                    { new Guid("7e7a85e0-5b9d-4582-8e27-29878a91ee4d"), "w", new Guid("8a9068dd-8e12-4203-819f-a21943fb0deb"), new Guid("c1cb0628-b919-4297-a5bd-f86d1d9e3160") },
-                    { new Guid("97dab6a7-4072-40ec-8654-a02f76d020a4"), "w", new Guid("5fab0ecc-8d69-4958-8ccb-540198d5c73c"), new Guid("3bfd9f6f-0f8e-4050-be90-77bbd01fff59") },
-                    { new Guid("d03b2de2-b2ad-4df1-8ed0-936c967ea1bf"), "w", new Guid("3ba2a104-25c2-408f-ab57-306137019512"), new Guid("8c2cca4b-4a90-4f52-9275-1ee96c77f6ab") }
+                    { new Guid("1f3db302-079f-424b-93aa-997b7d1ac96b"), "w", new Guid("fcd90fc6-ddf3-44d5-acda-c2c420e0a087"), new Guid("1ce9a108-70e3-4c1c-a89c-4731713698a8") },
+                    { new Guid("212476c1-3fa4-4648-9d9c-1cdbb199f59a"), "b", new Guid("96349c24-a518-4487-a6ff-a2429ecf2576"), new Guid("4882ba82-2809-4f40-848d-5230a1d398de") },
+                    { new Guid("76cbbef8-1d4b-45dd-a2a1-5b0d593c89a4"), "b", new Guid("d5e0db1c-85a1-4160-9bb7-4c28db12bf11"), new Guid("93c75571-43c9-4085-8736-e55b02df011b") },
+                    { new Guid("8692bb05-83dd-4f0d-b2bf-8d1507690109"), "w", new Guid("d5e0db1c-85a1-4160-9bb7-4c28db12bf11"), new Guid("4882ba82-2809-4f40-848d-5230a1d398de") },
+                    { new Guid("ad8f6a22-c3d7-41a9-8872-faf17e0415db"), "w", new Guid("96349c24-a518-4487-a6ff-a2429ecf2576"), new Guid("93c75571-43c9-4085-8736-e55b02df011b") },
+                    { new Guid("c1602f17-23a9-4ef9-9461-c2eb7cd9a912"), "b", new Guid("fcd90fc6-ddf3-44d5-acda-c2c420e0a087"), new Guid("4882ba82-2809-4f40-848d-5230a1d398de") }
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_tblUserGame_GameId",
+                table: "tblUserGame",
+                column: "GameId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_tblUserGame_UserId",
+                table: "tblUserGame",
+                column: "UserId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "tblUserGame");
+
+            migrationBuilder.DropTable(
                 name: "tblGame");
 
             migrationBuilder.DropTable(
                 name: "tblUser");
-
-            migrationBuilder.DropTable(
-                name: "tblUserGame");
         }
     }
 }

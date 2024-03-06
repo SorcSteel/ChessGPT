@@ -119,9 +119,20 @@ namespace ChessGPT.PL.Data
                 entity.ToTable("tblUserGame");
 
                 entity.Property(e => e.Id).ValueGeneratedNever();
-                entity.Property(e => e.UserId);
                 entity.Property(e => e.GameId);
                 entity.Property(e => e.Color);
+
+                entity.HasOne(d => d.User)
+                  .WithMany(p => p.UserGames)
+                  .HasForeignKey(d => d.UserId)
+                  .OnDelete(DeleteBehavior.ClientSetNull)
+                  .HasConstraintName("fk_tblUserGame_UserId");
+
+                entity.HasOne(d => d.Game)
+                  .WithMany(p => p.UserGames)
+                  .HasForeignKey(d => d.GameId)
+                  .OnDelete(DeleteBehavior.ClientSetNull)
+                  .HasConstraintName("fk_tblUserGame_GameId");
             });
 
             List<tblUserGame> UserGames = new List<tblUserGame>

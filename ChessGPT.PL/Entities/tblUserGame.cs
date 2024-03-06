@@ -12,5 +12,8 @@ namespace ChessGPT.PL.Entities
         public Guid UserId { get; set; }
         public Guid GameId { get; set; }
         public char Color { get; set; }
+
+        public virtual tblUser User { get; set; }
+        public virtual tblGame Game { get; set; }
     }
 }

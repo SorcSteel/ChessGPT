@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ChessGPT.PL.Migrations
 {
     [DbContext(typeof(ChessGPTEntities))]
-    [Migration("20240226234638_CreateDatabase")]
+    [Migration("20240306054129_CreateDatabase")]
     partial class CreateDatabase
     {
         /// <inheritdoc />
@@ -53,27 +53,27 @@ namespace ChessGPT.PL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("3ba2a104-25c2-408f-ab57-306137019512"),
+                            Id = new Guid("d5e0db1c-85a1-4160-9bb7-4c28db12bf11"),
                             GameBoard = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w",
                             GameName = "First Game",
                             GameState = "o",
-                            GameTime = new DateTime(2024, 2, 26, 17, 46, 37, 834, DateTimeKind.Local).AddTicks(7727)
+                            GameTime = new DateTime(2024, 3, 5, 23, 41, 29, 82, DateTimeKind.Local).AddTicks(5573)
                         },
                         new
                         {
-                            Id = new Guid("5fab0ecc-8d69-4958-8ccb-540198d5c73c"),
+                            Id = new Guid("96349c24-a518-4487-a6ff-a2429ecf2576"),
                             GameBoard = "rnbqkbnr/pp1ppppp/8/2p5/4P3/5N2/PPPP1PPP/RNBQKB1R b",
                             GameName = "Second Game",
                             GameState = "o",
-                            GameTime = new DateTime(2024, 2, 26, 17, 46, 37, 834, DateTimeKind.Local).AddTicks(7772)
+                            GameTime = new DateTime(2024, 3, 5, 23, 41, 29, 82, DateTimeKind.Local).AddTicks(5616)
                         },
                         new
                         {
-                            Id = new Guid("8a9068dd-8e12-4203-819f-a21943fb0deb"),
+                            Id = new Guid("fcd90fc6-ddf3-44d5-acda-c2c420e0a087"),
                             GameBoard = "4K3/4p3/Bk1p4/b4rP1/2R3p1/P3PP2/P3N3/5r2 w",
                             GameName = "Third Game",
                             GameState = "o",
-                            GameTime = new DateTime(2024, 2, 26, 17, 46, 37, 834, DateTimeKind.Local).AddTicks(7774)
+                            GameTime = new DateTime(2024, 3, 5, 23, 41, 29, 82, DateTimeKind.Local).AddTicks(5617)
                         });
                 });
 
@@ -109,7 +109,7 @@ namespace ChessGPT.PL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("8c2cca4b-4a90-4f52-9275-1ee96c77f6ab"),
+                            Id = new Guid("4882ba82-2809-4f40-848d-5230a1d398de"),
                             FirstName = "Kaiden",
                             IsComputer = false,
                             LastName = "Brunke",
@@ -118,7 +118,7 @@ namespace ChessGPT.PL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("3bfd9f6f-0f8e-4050-be90-77bbd01fff59"),
+                            Id = new Guid("93c75571-43c9-4085-8736-e55b02df011b"),
                             FirstName = "Logan",
                             IsComputer = false,
                             LastName = "Vang",
@@ -127,7 +127,7 @@ namespace ChessGPT.PL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("c1cb0628-b919-4297-a5bd-f86d1d9e3160"),
+                            Id = new Guid("1ce9a108-70e3-4c1c-a89c-4731713698a8"),
                             FirstName = "AI",
                             IsComputer = true,
                             LastName = "Robot",
@@ -154,51 +154,84 @@ namespace ChessGPT.PL.Migrations
                     b.HasKey("Id")
                         .HasName("PK_tblUserGame_Id");
 
+                    b.HasIndex("GameId");
+
+                    b.HasIndex("UserId");
+
                     b.ToTable("tblUserGame", (string)null);
 
                     b.HasData(
                         new
                         {
-                            Id = new Guid("d03b2de2-b2ad-4df1-8ed0-936c967ea1bf"),
+                            Id = new Guid("8692bb05-83dd-4f0d-b2bf-8d1507690109"),
                             Color = "w",
-                            GameId = new Guid("3ba2a104-25c2-408f-ab57-306137019512"),
-                            UserId = new Guid("8c2cca4b-4a90-4f52-9275-1ee96c77f6ab")
+                            GameId = new Guid("d5e0db1c-85a1-4160-9bb7-4c28db12bf11"),
+                            UserId = new Guid("4882ba82-2809-4f40-848d-5230a1d398de")
                         },
                         new
                         {
-                            Id = new Guid("0a3d230b-e8f2-4c32-bdc9-ef1d223fd0ce"),
+                            Id = new Guid("76cbbef8-1d4b-45dd-a2a1-5b0d593c89a4"),
                             Color = "b",
-                            GameId = new Guid("3ba2a104-25c2-408f-ab57-306137019512"),
-                            UserId = new Guid("3bfd9f6f-0f8e-4050-be90-77bbd01fff59")
+                            GameId = new Guid("d5e0db1c-85a1-4160-9bb7-4c28db12bf11"),
+                            UserId = new Guid("93c75571-43c9-4085-8736-e55b02df011b")
                         },
                         new
                         {
-                            Id = new Guid("4cbde8b9-24ec-49a9-97c9-7f770982c03b"),
+                            Id = new Guid("212476c1-3fa4-4648-9d9c-1cdbb199f59a"),
                             Color = "b",
-                            GameId = new Guid("5fab0ecc-8d69-4958-8ccb-540198d5c73c"),
-                            UserId = new Guid("8c2cca4b-4a90-4f52-9275-1ee96c77f6ab")
+                            GameId = new Guid("96349c24-a518-4487-a6ff-a2429ecf2576"),
+                            UserId = new Guid("4882ba82-2809-4f40-848d-5230a1d398de")
                         },
                         new
                         {
-                            Id = new Guid("97dab6a7-4072-40ec-8654-a02f76d020a4"),
+                            Id = new Guid("ad8f6a22-c3d7-41a9-8872-faf17e0415db"),
                             Color = "w",
-                            GameId = new Guid("5fab0ecc-8d69-4958-8ccb-540198d5c73c"),
-                            UserId = new Guid("3bfd9f6f-0f8e-4050-be90-77bbd01fff59")
+                            GameId = new Guid("96349c24-a518-4487-a6ff-a2429ecf2576"),
+                            UserId = new Guid("93c75571-43c9-4085-8736-e55b02df011b")
                         },
                         new
                         {
-                            Id = new Guid("7e7a85e0-5b9d-4582-8e27-29878a91ee4d"),
+                            Id = new Guid("1f3db302-079f-424b-93aa-997b7d1ac96b"),
                             Color = "w",
-                            GameId = new Guid("8a9068dd-8e12-4203-819f-a21943fb0deb"),
-                            UserId = new Guid("c1cb0628-b919-4297-a5bd-f86d1d9e3160")
+                            GameId = new Guid("fcd90fc6-ddf3-44d5-acda-c2c420e0a087"),
+                            UserId = new Guid("1ce9a108-70e3-4c1c-a89c-4731713698a8")
                         },
                         new
                         {
-                            Id = new Guid("6ea4a8b8-2540-4640-89bb-dbcd9f6b3745"),
+                            Id = new Guid("c1602f17-23a9-4ef9-9461-c2eb7cd9a912"),
                             Color = "b",
-                            GameId = new Guid("8a9068dd-8e12-4203-819f-a21943fb0deb"),
-                            UserId = new Guid("8c2cca4b-4a90-4f52-9275-1ee96c77f6ab")
+                            GameId = new Guid("fcd90fc6-ddf3-44d5-acda-c2c420e0a087"),
+                            UserId = new Guid("4882ba82-2809-4f40-848d-5230a1d398de")
                         });
+                });
+
+            modelBuilder.Entity("ChessGPT.PL.Entities.tblUserGame", b =>
+                {
+                    b.HasOne("ChessGPT.PL.Entities.tblGame", "Game")
+                        .WithMany("UserGames")
+                        .HasForeignKey("GameId")
+                        .IsRequired()
+                        .HasConstraintName("fk_tblUserGame_GameId");
+
+                    b.HasOne("ChessGPT.PL.Entities.tblUser", "User")
+                        .WithMany("UserGames")
+                        .HasForeignKey("UserId")
+                        .IsRequired()
+                        .HasConstraintName("fk_tblUserGame_UserId");
+
+                    b.Navigation("Game");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ChessGPT.PL.Entities.tblGame", b =>
+                {
+                    b.Navigation("UserGames");
+                });
+
+            modelBuilder.Entity("ChessGPT.PL.Entities.tblUser", b =>
+                {
+                    b.Navigation("UserGames");
                 });
 #pragma warning restore 612, 618
         }

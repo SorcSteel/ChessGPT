@@ -14,5 +14,7 @@ namespace ChessGPT.PL.Entities
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public bool IsComputer { get; set; }
+
+        public virtual ICollection<tblUserGame> UserGames { get; set;}
     }
 }

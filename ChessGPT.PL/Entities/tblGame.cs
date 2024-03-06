@@ -13,5 +13,8 @@ namespace ChessGPT.PL.Entities
         public DateTime GameTime { get; set; }
         public string GameBoard {  get; set; }
         public char GameState { get; set; }
+
+        public virtual ICollection<tblUserGame> UserGames { get; set; }
+
     }
 }

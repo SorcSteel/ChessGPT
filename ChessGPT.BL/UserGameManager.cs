@@ -73,7 +73,7 @@ namespace ChessGPT.BL
             try
             {
                 tblUserGame row = new tblUserGame { UserId = user.Id, GameId = game.Id, Color = color };
-                userGame.Id = row.id;
+                userGame.Id = row.Id;
                 return base.Insert(row, rollback);
 
             }
