@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChessGPT.MigrationHandler",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChessGPT.BL.Models", "ChessGPT.BL.Models\ChessGPT.BL.Models.csproj", "{E5B8F632-13C3-4F53-869A-9B0BF38C6F60}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChessGPT.BL", "ChessGPT.BL\ChessGPT.BL.csproj", "{D7A8322D-9F65-427F-8701-B07241728C99}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChessGPT.BL", "ChessGPT.BL\ChessGPT.BL.csproj", "{D7A8322D-9F65-427F-8701-B07241728C99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChessGPT.BL.Test", "ChessGPT.BL.Test\ChessGPT.BL.Test.csproj", "{1FAD38BE-C3D6-4412-89A0-554BC5238189}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{D7A8322D-9F65-427F-8701-B07241728C99}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7A8322D-9F65-427F-8701-B07241728C99}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D7A8322D-9F65-427F-8701-B07241728C99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FAD38BE-C3D6-4412-89A0-554BC5238189}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FAD38BE-C3D6-4412-89A0-554BC5238189}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FAD38BE-C3D6-4412-89A0-554BC5238189}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FAD38BE-C3D6-4412-89A0-554BC5238189}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

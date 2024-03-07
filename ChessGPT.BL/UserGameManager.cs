@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage;
 
 namespace ChessGPT.BL
 {
-    internal class UserGameManager : GenericManager<tblUserGame>
+    public class UserGameManager : GenericManager<tblUserGame>
     {
         public UserGameManager(DbContextOptions<ChessGPTEntities> options) : base(options) { }
 
@@ -95,6 +95,25 @@ namespace ChessGPT.BL
                 throw;
             }
         }
+        
+        public int Update(UserGame userGame, bool rollback = false)
+        {
+            try
+            {
+                int results = base.Update(new tblUserGame
+                {
+                    Id = userGame.Id,
+                    UserId = userGame.UserId,
+                    GameId = userGame.GameId,
+                    Color = userGame.Color,
+                }, rollback);
+                return results;
+            }
+            catch (Exception)
+            {
 
+                throw;
+            }
+        }
     }
 }

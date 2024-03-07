@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Storage;
 
 namespace ChessGPT.BL
 {
-    internal class UserManager : GenericManager<tblUser>
+    public class UserManager : GenericManager<tblUser>
     {
         public UserManager(DbContextOptions<ChessGPTEntities> options) : base(options) { }
 
