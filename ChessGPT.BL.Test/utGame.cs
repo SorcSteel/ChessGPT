@@ -57,6 +57,7 @@ namespace ChessGPT.BL.Test
         public void DeleteTest()
         {
             Game game = new GameManager(options).Load().FirstOrDefault();
+            UserGame userGame = new UserGameManager(options).Load().FirstOrDefault();
 
             Assert.IsTrue(new GameManager(options).Delete(game.Id, true) > 0);
         }

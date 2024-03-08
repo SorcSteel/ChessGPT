@@ -68,12 +68,11 @@ namespace ChessGPT.BL
             }
         }
 
-        public int Insert(User user, Game game, UserGame userGame, char color, bool rollback = false)
+        public int Insert(Guid userId, Guid gameId, char color, bool rollback = false)
         {
             try
             {
-                tblUserGame row = new tblUserGame { UserId = user.Id, GameId = game.Id, Color = color };
-                userGame.Id = row.Id;
+                tblUserGame row = new tblUserGame { Id = Guid.NewGuid(), UserId = userId, GameId = gameId, Color = color  };
                 return base.Insert(row, rollback);
 
             }
@@ -95,25 +94,7 @@ namespace ChessGPT.BL
                 throw;
             }
         }
-        
-        public int Update(UserGame userGame, bool rollback = false)
-        {
-            try
-            {
-                int results = base.Update(new tblUserGame
-                {
-                    Id = userGame.Id,
-                    UserId = userGame.UserId,
-                    GameId = userGame.GameId,
-                    Color = userGame.Color,
-                }, rollback);
-                return results;
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
+        // Theres no need to update UserGame, It's either you're White or Black
+        // Unless we're updating the players that are playing the game which makes little sense
     }
 }

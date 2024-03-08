@@ -25,31 +25,11 @@ namespace ChessGPT.BL.Test
         [TestMethod]
         public void InsertTest()
         {
-            UserGame userGame = new UserGame
-            {
-                Id = Guid.NewGuid(),
-                UserId = Guid.NewGuid(),
-                GameId = Guid.NewGuid(),
-                Color = 'b'
-            };
-            User user = new User() { Id = Guid.NewGuid(), FirstName = "test", LastName = "test", Password = "password", UserName = "test", IsComputer = false };
-            Game game = new Game() { Id = Guid.NewGuid(), GameBoard = "test", GameName = "test", GameState = 'o', GameTime = DateTime.Now};
+            Guid userId = new UserManager(options).Load().FirstOrDefault().Id;
+            Guid gameId = new GameManager(options).Load().FirstOrDefault().Id;
 
-            int result = new UserGameManager(options).Insert(user, game, userGame, 'b', true);
+            int result = new UserGameManager(options).Insert(userId, gameId, 'b', true);
             Assert.IsTrue(result > 0);
-        }
-
-        [TestMethod]
-        public void UpdateTest()
-        {
-            UserGame userGame = new UserGameManager(options).Load().FirstOrDefault();
-
-            if (userGame != null) 
-            {
-                userGame.Color = 'w';
-                Assert.IsTrue(new UserGameManager(options).Update(userGame, true) > 0);
-            }
-
         }
 
         [TestMethod]

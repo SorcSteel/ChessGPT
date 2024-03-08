@@ -56,7 +56,7 @@ namespace ChessGPT.BL.Test
         [TestMethod]
         public void DeleteTest()
         {
-            User user = new UserManager(options).Load().FirstOrDefault();
+            User user = new UserManager(options).Load().FirstOrDefault(x => x.UserName == "500201348");
 
             Assert.IsTrue(new UserManager(options).Delete(user.Id, true) > 0);
         }

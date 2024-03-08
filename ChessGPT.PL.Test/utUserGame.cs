@@ -23,8 +23,8 @@ namespace ChessGPT.PL.Test
             int rowsAffected = InsertTest(new tblUserGame
             {
                 Id = Guid.NewGuid(),
-                UserId = Guid.NewGuid(),
-                GameId = Guid.NewGuid(),
+                UserId = base.LoadTest().FirstOrDefault().UserId,
+                GameId = base.LoadTest().FirstOrDefault().GameId,
                 Color = 'w'
             });
             Assert.AreEqual(1, rowsAffected);
