@@ -1,15 +1,21 @@
+using ChessGPT.API.Configurations;
+using ChessGPT.API.Services;
 using ChessGPT.PL.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.Configure<OpenAIConfig>(builder.Configuration.GetSection("OpenAI"));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<IOpenAIService, OpenAIService>();
 
 //add conection information
 builder.Services.AddDbContextPool<ChessGPTEntities>(options =>
