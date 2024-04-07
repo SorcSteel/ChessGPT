@@ -78,6 +78,40 @@ namespace ChessGPT.BL
             }
         }
 
+        public User LoadByLogin(string userName, string password)
+        {
+            try
+            {
+                password = GetHash(password);
+                tblUser row = new ChessGPTEntities(options).tblUsers.FirstOrDefault(u => u.UserName == userName && u.Password == password);
+
+                if (row != null)
+                {
+                    User user = new User
+                    {
+                        Id = row.Id,
+                        FirstName = row.FirstName,
+                        LastName = row.LastName,
+                        UserName = row.UserName,
+                        Password = row.Password,
+                        IsComputer = row.IsComputer,
+                    };
+
+                    return user;
+                }
+                else
+                {
+                    throw new Exception();
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public int Insert(User user, bool rollback = false)
         {
             try
