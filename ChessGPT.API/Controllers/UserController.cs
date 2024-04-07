@@ -35,6 +35,12 @@ namespace KB.DVDCentral.API.Controllers
             return new UserManager(options).LoadById(id);
         }
 
+        [HttpGet("{username}/{password}")]
+        public User Get(string username, string password)
+        {
+            return new UserManager(options).LoadByLogin(username, password);
+        }
+
         [HttpPost("{rollback?}")]
         public int post([FromBody] User user, bool rollback = false)
         {

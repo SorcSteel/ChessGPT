@@ -46,7 +46,6 @@ namespace ChessGPT.BL
                 throw;
             }
         }
-
         public int Insert(T entity, bool rollback = false)
         {
             try
