@@ -101,7 +101,16 @@ namespace ChessGPT.BL
                 }
                 else
                 {
-                    throw new Exception();
+                    User user = new User
+                    {
+                        Id = Guid.Empty,
+                        FirstName = "",
+                        LastName = "",
+                        UserName = "",
+                        Password = "",
+                        IsComputer = false,
+                    };
+                    return user;
                 }
 
             }
