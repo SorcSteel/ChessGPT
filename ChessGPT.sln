@@ -17,6 +17,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChessGPT.BL.Test", "ChessGP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChessGPT.API", "ChessGPT.API\ChessGPT.API.csproj", "{9E666BF1-26A1-4206-AF3F-9AA99D6FA146}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChessGPT.API.Test", "ChessGPT.API.Test\ChessGPT.API.Test.csproj", "{071CEBBD-B593-4693-B976-B3DC3BB7264D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chess.GPT.API.Test", "Chess.GPT.API.Test\Chess.GPT.API.Test.csproj", "{74A27C39-A0E0-4971-9EAB-7C87649EC4AD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,14 @@ Global
 		{9E666BF1-26A1-4206-AF3F-9AA99D6FA146}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E666BF1-26A1-4206-AF3F-9AA99D6FA146}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E666BF1-26A1-4206-AF3F-9AA99D6FA146}.Release|Any CPU.Build.0 = Release|Any CPU
+		{071CEBBD-B593-4693-B976-B3DC3BB7264D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{071CEBBD-B593-4693-B976-B3DC3BB7264D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{071CEBBD-B593-4693-B976-B3DC3BB7264D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{071CEBBD-B593-4693-B976-B3DC3BB7264D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74A27C39-A0E0-4971-9EAB-7C87649EC4AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74A27C39-A0E0-4971-9EAB-7C87649EC4AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74A27C39-A0E0-4971-9EAB-7C87649EC4AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74A27C39-A0E0-4971-9EAB-7C87649EC4AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
