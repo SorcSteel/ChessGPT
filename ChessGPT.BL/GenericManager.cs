@@ -12,6 +12,10 @@ namespace ChessGPT.BL
         protected DbContextOptions<ChessGPTEntities> options;
 
         protected readonly ILogger logger;
+        public GenericManager(DbContextOptions<ChessGPTEntities> options)
+        {
+            this.options = options;
+        }
         public GenericManager(ILogger logger,
                               DbContextOptions<ChessGPTEntities> options)
         {
@@ -26,6 +30,7 @@ namespace ChessGPT.BL
         {
             try
             {
+                if (logger != null) logger.LogWarning($"Getting {typeof(T).Name}s");
                 return new ChessGPTEntities(options)
                     .Set<T>()
                     .ToList<T>();
@@ -43,11 +48,13 @@ namespace ChessGPT.BL
             try
             {
                 var row = new ChessGPTEntities(options).Set<T>().Where(t => t.Id == id).FirstOrDefault();
+                if (logger != null) logger.LogWarning("Cannot Insert or Row Already Exists");
                 return row;
             }
             catch (Exception)
             {
 
+                if (logger != null) logger.LogWarning("Row doesn't exist");
                 throw;
             }
         }
@@ -67,6 +74,7 @@ namespace ChessGPT.BL
                     dc.Set<T>().Add(entity);
                     results = dc.SaveChanges();
 
+                    if (logger != null) logger.LogWarning("Inserted Row");
                     if (rollback) dbTransaction.Rollback();
 
                 }
@@ -75,7 +83,7 @@ namespace ChessGPT.BL
             }
             catch (Exception)
             {
-
+                if (logger != null) logger.LogWarning("Cannot insert or row already exists");
                 throw;
             }
         }
@@ -94,6 +102,7 @@ namespace ChessGPT.BL
 
                     results = dc.SaveChanges();
 
+                    if (logger != null) logger.LogWarning("Updated Row");
                     if (rollback) dbTransaction.Rollback();
 
                 }
@@ -102,7 +111,7 @@ namespace ChessGPT.BL
             }
             catch (Exception)
             {
-
+                if (logger != null) logger.LogWarning("Cannot update or row doesnt exist");
                 throw;
             }
         }
@@ -122,10 +131,12 @@ namespace ChessGPT.BL
                     {
                         dc.Set<T>().Remove(row);
                         results = dc.SaveChanges();
+                        if (logger != null) logger.LogWarning("Deleting row");
                         if (rollback) dbTransaction.Rollback();
                     }
                     else
                     {
+                        if (logger != null) logger.LogWarning("Row does not exist");
                         throw new Exception("Row does not exist.");
                     }
 

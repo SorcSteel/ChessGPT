@@ -9,6 +9,7 @@ namespace ChessGPT.BL
 {
     public class UserManager : GenericManager<tblUser>
     {
+        public UserManager(DbContextOptions<ChessGPTEntities> options) : base( options) { }
         public UserManager(ILogger logger, DbContextOptions<ChessGPTEntities> options) : base(logger, options) { }
 
         private string GetHash(string Password)

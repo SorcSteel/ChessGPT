@@ -32,5 +32,18 @@ namespace ChessGPT.BL.Test
             dc = new ChessGPTEntities(options);
         }
 
+        [TestInitialize]
+        public void TestInitialize()
+        {
+            transaction = dc.Database.BeginTransaction();
+        }
+
+        [TestCleanup]
+        public void TestCleanup()
+        {
+            transaction.Rollback();
+            transaction.Dispose();
+            dc = null;
+        }
     }
 }

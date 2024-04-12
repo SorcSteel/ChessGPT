@@ -9,6 +9,7 @@ namespace ChessGPT.BL
 {
     public class GameManager : GenericManager<tblGame>
     {
+        public GameManager( DbContextOptions<ChessGPTEntities> options) : base(options) { }
         public GameManager(ILogger logger, DbContextOptions<ChessGPTEntities> options) : base(logger, options) { }
 
 

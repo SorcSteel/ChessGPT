@@ -7,22 +7,24 @@
 
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
-	  <PreserveCompilationContext>true</PreserveCompilationContext>
+	  <PreserveCompilationContext>false</PreserveCompilationContext>	  
+	  <BaseOutputPath>C:\Users\logan\OneDrive\Desktop\Projects\ChessGPT\Chess.GPT.API.Test\bin\Debug\net8.0</BaseOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
-    <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
-    <PackageReference Include="coverlet.collector" Version="6.0.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
-    <PackageReference Include="MSTest.TestAdapter" Version="3.1.1" />
-    <PackageReference Include="MSTest.TestFramework" Version="3.1.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="8.0.2" />
-    <PackageReference Include="MSTest.TestFramework" Version="3.1.1" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+	  <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="8.0.2" />
+	  <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
+	  <PackageReference Include="MSTest.TestAdapter" Version="3.2.1" />
+	  <PackageReference Include="MSTest.TestFramework" Version="3.2.1" />
+	  <PackageReference Include="coverlet.collector" Version="6.0.0">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ChessGPT.BL\ChessGPT.BL.csproj" />
+	  <ProjectReference Include="..\ChessGPT.BL\ChessGPT.BL.csproj" />
+	  <ProjectReference Include="..\ChessGPT.API\ChessGPT.API.csproj" />
   </ItemGroup>
 
 
