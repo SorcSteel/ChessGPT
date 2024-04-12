@@ -26,19 +26,19 @@ namespace KB.DVDCentral.API.Controllers
         [HttpGet]
         public IEnumerable<User> Get()
         {
-            return new UserManager(options).Load();
+            return new UserManager(logger, options).Load();
         }
 
         [HttpGet("{id}")]
         public User Get(Guid id)
         {
-            return new UserManager(options).LoadById(id);
+            return new UserManager(logger, options).LoadById(id);
         }
 
         [HttpGet("{username}/{password}")]
         public User Get(string username, string password)
         {
-            return new UserManager(options).LoadByLogin(username, password);
+            return new UserManager(logger, options).LoadByLogin(username, password);
         }
 
         [HttpPost("{rollback?}")]
@@ -46,7 +46,7 @@ namespace KB.DVDCentral.API.Controllers
         {
             try
             {
-                return new UserManager(options).Insert(user, rollback);
+                return new UserManager(logger, options).Insert(user, rollback);
             }
             catch (Exception)
             {
@@ -60,7 +60,7 @@ namespace KB.DVDCentral.API.Controllers
         {
             try
             {
-                return new UserManager(options).Update(user, rollback);
+                return new UserManager(logger, options).Update(user, rollback);
             }
             catch (Exception)
             {
@@ -74,7 +74,7 @@ namespace KB.DVDCentral.API.Controllers
         {
             try
             {
-                return new UserManager(options).Delete(id, rollback);
+                return new UserManager(logger, options).Delete(id, rollback);
             }
             catch (Exception)
             {

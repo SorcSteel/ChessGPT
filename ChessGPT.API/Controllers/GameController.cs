@@ -26,13 +26,13 @@ namespace KB.DVDCentral.API.Controllers
         [HttpGet]
         public IEnumerable<Game> Get()
         {
-            return new GameManager(options).Load();
+            return new GameManager(logger, options).Load();
         }
 
         [HttpGet("{id}")]
         public Game Get(Guid id)
         {
-            return new GameManager(options).LoadById(id);
+            return new GameManager(logger, options).LoadById(id);
         }
 
         [HttpPost("{rollback?}")]
@@ -40,7 +40,7 @@ namespace KB.DVDCentral.API.Controllers
         {
             try
             {
-                return new GameManager(options).Insert(game, rollback);
+                return new GameManager(logger, options).Insert(game, rollback);
             }
             catch (Exception)
             {
@@ -54,7 +54,7 @@ namespace KB.DVDCentral.API.Controllers
         {
             try
             {
-                return new GameManager(options).Update(game, rollback);
+                return new GameManager(logger, options).Update(game, rollback);
             }
             catch (Exception)
             {
@@ -68,7 +68,7 @@ namespace KB.DVDCentral.API.Controllers
         {
             try
             {
-                return new GameManager(options).Delete(id, rollback);
+                return new GameManager(logger, options).Delete(id, rollback);
             }
             catch (Exception)
             {

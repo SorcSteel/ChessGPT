@@ -3,6 +3,7 @@ using ChessGPT.PL.Data;
 using ChessGPT.PL.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.Extensions.Logging;
 
 namespace ChessGPT.BL
 {
@@ -10,10 +11,14 @@ namespace ChessGPT.BL
     {
         protected DbContextOptions<ChessGPTEntities> options;
 
-        public GenericManager(DbContextOptions<ChessGPTEntities> options)
+        protected readonly ILogger logger;
+        public GenericManager(ILogger logger,
+                              DbContextOptions<ChessGPTEntities> options)
         {
             this.options = options;
+            this.logger = logger;
         }
+
 
         public GenericManager() { }
 
