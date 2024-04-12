@@ -1,6 +1,0 @@
-@ChessGPT.API.Test_HostAddress = http://localhost:5033
-
-GET {{ChessGPT.API.Test_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
