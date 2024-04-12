@@ -19,15 +19,8 @@ namespace KB.DVDCentral.API.Controllers
         }
 
         /// <summary>
-        /// Returns a List of Movies
+        /// Retrieves a User By Id.
         /// </summary>
-        /// <returns></returns>
-
-        [HttpGet]
-        public IEnumerable<User> Get()
-        {
-            return new UserManager(options).Load();
-        }
 
         [HttpGet("{id}")]
         public User Get(Guid id)
@@ -35,11 +28,19 @@ namespace KB.DVDCentral.API.Controllers
             return new UserManager(options).LoadById(id);
         }
 
+        /// <summary>
+        /// Retrieves a User By Username And Password.
+        /// </summary>
+
         [HttpGet("{username}/{password}")]
         public User Get(string username, string password)
         {
             return new UserManager(options).LoadByLogin(username, password);
         }
+
+        /// <summary>
+        /// Creates A User.
+        /// </summary>
 
         [HttpPost("{rollback?}")]
         public int post([FromBody] User user, bool rollback = false)
@@ -55,6 +56,10 @@ namespace KB.DVDCentral.API.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Updates a User By Id.
+        /// </summary>
         [HttpPut("{id}/{rollback?}")]
         public int put(Guid id, [FromBody] User user, bool rollback = false)
         {
@@ -69,6 +74,10 @@ namespace KB.DVDCentral.API.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Deletes a User By Id.
+        /// </summary>
         [HttpDelete("{id}/{rollback?}")]
         public int Delete(Guid id, bool rollback = false)
         {

@@ -18,23 +18,28 @@ namespace KB.DVDCentral.API.Controllers
             this.options = options;
         }
 
-        /// <summary>
-        /// Returns a List of Movies
-        /// </summary>
-        /// <returns></returns>
 
+        /// <summary>
+        /// Retrieves all Games.
+        /// </summary>
         [HttpGet]
         public IEnumerable<Game> Get()
         {
             return new GameManager(options).Load();
         }
 
+        /// <summary>
+        /// Retrieves a Game By Id.
+        /// </summary>
         [HttpGet("{id}")]
         public Game Get(Guid id)
         {
             return new GameManager(options).LoadById(id);
         }
 
+        /// <summary>
+        /// Creates a Game.
+        /// </summary>
         [HttpPost("{rollback?}")]
         public int post([FromBody] Game game, bool rollback = false)
         {
@@ -49,6 +54,9 @@ namespace KB.DVDCentral.API.Controllers
             }
         }
 
+        /// <summary>
+        /// Updates a Game By Id.
+        /// </summary>
         [HttpPut("{id}/{rollback?}")]
         public int put(Guid id, [FromBody] Game game, bool rollback = false)
         {
@@ -63,6 +71,9 @@ namespace KB.DVDCentral.API.Controllers
             }
         }
 
+        /// <summary>
+        /// Deletes a Game By Id.
+        /// </summary>
         [HttpDelete("{id}/{rollback?}")]
         public int Delete(Guid id, bool rollback = false)
         {

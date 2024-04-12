@@ -19,9 +19,8 @@ namespace KB.DVDCentral.API.Controllers
         }
 
         /// <summary>
-        /// Returns a List of Movies
+        /// Retrieves all UserGames.
         /// </summary>
-        /// <returns></returns>
 
         [HttpGet]
         public IEnumerable<UserGame> Get()
@@ -29,6 +28,9 @@ namespace KB.DVDCentral.API.Controllers
             return new UserGameManager(options).Load();
         }
 
+        /// <summary>
+        /// Retrieves a UserGame By Id.
+        /// </summary>
         [HttpGet("{id}")]
         public UserGame Get(Guid id)
         {
@@ -49,6 +51,10 @@ namespace KB.DVDCentral.API.Controllers
         //    }
         //}
 
+
+        /// <summary>
+        /// Deletes a UserGame By Id.
+        /// </summary>
         [HttpDelete("{id}/{rollback?}")]
         public int Delete(Guid id, bool rollback = false)
         {
