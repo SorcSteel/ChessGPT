@@ -83,7 +83,8 @@ namespace ChessGPT.BL
             try
             {
                 password = GetHash(password);
-                tblUser row = new ChessGPTEntities(options).tblUsers.FirstOrDefault(u => u.UserName == userName && u.Password == password);
+                tblUser row = new ChessGPTEntities(options).tblUsers.FirstOrDefault
+                            (u => u.UserName == userName && u.Password == password);
 
                 if (row != null)
                 {
@@ -125,7 +126,7 @@ namespace ChessGPT.BL
         {
             try
             {
-                tblUser row = new tblUser { FirstName = user.FirstName, LastName = user.LastName, UserName = user.UserName, Password = user.Password, IsComputer = user.IsComputer };
+                tblUser row = new tblUser { FirstName = user.FirstName, LastName = user.LastName, UserName = user.UserName, Password = GetHash(user.Password), IsComputer = user.IsComputer };
                 user.Id = row.Id;
                 return base.Insert(row, rollback);
 
