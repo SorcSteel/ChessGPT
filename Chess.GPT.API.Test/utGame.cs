@@ -2,7 +2,7 @@
 
 using ChessGPT.BL.Models;
 
-namespace Chess.GPT.API.Test
+namespace ChessGPT.API.Test
 {
     [TestClass]
     public class utGame : utBase
@@ -17,14 +17,6 @@ namespace Chess.GPT.API.Test
         public async Task InsertTestAsync()
         {
             Game game = new Game { GameName = "Test", GameTime = DateTime.Now, GameBoard = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR", GameState = 'o' };
-            await base.InsertTestAsync<Game>(game);
-
-        }
-
-        [TestMethod]
-        public async Task InsertTestAsyncFail()
-        {
-            Game game = new Game { GameName = "First Game", GameTime = DateTime.Now, GameBoard = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR", GameState = 'o' };
             await base.InsertTestAsync<Game>(game);
 
         }

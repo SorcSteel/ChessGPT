@@ -1,11 +1,6 @@
 ﻿
 
-using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.VisualStudio.TestPlatform.TestHost;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json.Linq;
-
-namespace Chess.GPT.API.Test
+namespace ChessGPT.API.Test
 {
     class APIProject : WebApplicationFactory<Program>
     {
