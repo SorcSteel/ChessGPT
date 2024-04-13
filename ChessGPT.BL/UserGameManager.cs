@@ -3,6 +3,7 @@ using ChessGPT.PL.Data;
 using ChessGPT.PL.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.Extensions.Logging;
 
 
 namespace ChessGPT.BL
@@ -10,6 +11,7 @@ namespace ChessGPT.BL
     public class UserGameManager : GenericManager<tblUserGame>
     {
         public UserGameManager(DbContextOptions<ChessGPTEntities> options) : base(options) { }
+        public UserGameManager(ILogger logger, DbContextOptions<ChessGPTEntities> options) : base(logger, options) { }
 
         public List<UserGame> Load()
         {
@@ -72,7 +74,7 @@ namespace ChessGPT.BL
         {
             try
             {
-                tblUserGame row = new tblUserGame { Id = Guid.NewGuid(), UserId = userId, GameId = gameId, Color = color  };
+                tblUserGame row = new tblUserGame { Id = Guid.NewGuid(), UserId = userId, GameId = gameId, Color = color };
                 return base.Insert(row, rollback);
 
             }

@@ -3,12 +3,14 @@ using ChessGPT.PL.Data;
 using ChessGPT.PL.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.Extensions.Logging;
 
 namespace ChessGPT.BL
 {
     public class GameManager : GenericManager<tblGame>
     {
         public GameManager(DbContextOptions<ChessGPTEntities> options) : base(options) { }
+        public GameManager(ILogger logger, DbContextOptions<ChessGPTEntities> options) : base(logger, options) { }
 
 
 
