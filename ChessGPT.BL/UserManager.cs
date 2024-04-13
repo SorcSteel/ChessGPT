@@ -3,12 +3,14 @@ using ChessGPT.PL.Data;
 using ChessGPT.PL.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.Extensions.Logging;
 
 namespace ChessGPT.BL
 {
     public class UserManager : GenericManager<tblUser>
     {
         public UserManager(DbContextOptions<ChessGPTEntities> options) : base(options) { }
+        public UserManager(ILogger logger, DbContextOptions<ChessGPTEntities> options) : base(logger, options) { }
 
         private string GetHash(string Password)
         {
@@ -139,7 +141,7 @@ namespace ChessGPT.BL
         }
 
         public int Update(User user, bool rollback = false)
-        { 
+        {
 
             try
             {
