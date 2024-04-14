@@ -23,17 +23,17 @@ steps:
 
     
 - task: DotNetCoreCLI@2
-  displayName: Build Test API
+  displayName: Build API Test
   inputs:
     command: build
-    projects: 'ChessGPT/ChessGPT.API.Test/ChessGPT.API.Test.csproj'
+    projects: 'ChessGPT.API.Test/ChessGPT.API.Test.csproj'
     arguments: '--configuration Debug' 
 
 - task: DotNetCoreCLI@2
-  displayName: test Test API
+  displayName: Test API Test
   inputs:
     command: test
-    projects: 'ChessGPT/ChessGPT.API.Test/ChessGPT.API.Test.csproj'
+    projects: 'ChessGPT.API.Test/ChessGPT.API.Test.csproj'
     arguments: '--configuration Debug'
 
 - task: DotNetCoreCLI@2
