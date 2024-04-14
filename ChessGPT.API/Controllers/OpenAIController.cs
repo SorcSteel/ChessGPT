@@ -17,6 +17,9 @@ namespace ChessGPT.API.Controllers
             this.openAiService = openAiService;
         }
 
+        /// <summary>
+        /// OpenAI autocompletes the given sentence
+        /// </summary>
 
         [HttpPost()]
         [Route("CompleteSentence")]
@@ -25,6 +28,9 @@ namespace ChessGPT.API.Controllers
             var result = await openAiService.CompleteSentence(text);
             return Ok(result);
         }
+        /// <summary>
+        /// Returns a move in FEN Notation when given a board state
+        /// </summary>
 
         [HttpPost()]
         [Route("ComputerMove")]
