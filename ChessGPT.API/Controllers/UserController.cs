@@ -17,6 +17,14 @@ namespace KB.DVDCentral.API.Controllers
         {
             this.options = options;
         }
+        /// <summary>
+        /// Retrieves all Users
+        /// </summary>
+        [HttpGet]
+        public IEnumerable<User> Get()
+        {
+            return new UserManager(options).Load();
+        }
 
         /// <summary>
         /// Retrieves a User By Id.

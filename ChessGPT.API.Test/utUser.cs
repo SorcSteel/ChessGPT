@@ -24,20 +24,20 @@ namespace ChessGPT.API.Test
         [TestMethod]
         public async Task DeleteTestAsync()
         {
-            await base.DeleteTestAsync1<User>(new KeyValuePair<string, string>("UserName", "test"));
+            await base.DeleteTestAsync1<User>(new KeyValuePair<string, string>("FirstName", "Logan"));
         }
 
         [TestMethod]
         public async Task LoadByIdTestAsync()
         {
-            await base.LoadByIdTestAsync<User>(new KeyValuePair<string, string>("UserName", "test"));
+            await base.LoadByIdTestAsync<User>(new KeyValuePair<string, string>("FirstName", "Logan"));
         }
 
         [TestMethod]
         public async Task UpdateTestAsync()
         {
-            User user = new User { UserName = "updateTest", Password = "test" };
-            await base.UpdateTestAsync<User>(new KeyValuePair<string, string>("UserName", "test"), user);
+            User user = new User { UserName = "updateTest", Password = "test", FirstName = "fnameTest", LastName= "lnameTest",  };
+            await base.UpdateTestAsync<User>(new KeyValuePair<string, string>("FirstName", "Logan"), user);
 
         }
 
