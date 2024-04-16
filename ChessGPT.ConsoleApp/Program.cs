@@ -1,42 +1,43 @@
-﻿using ChessGPT.ConsoleApp;
+﻿using Microsoft.AspNetCore.SignalR.Client;
 
-internal class Program
+class Program
 {
-
-    private static string DrawMenu()
+    static async Task Main(string[] args)
     {
-        Console.WriteLine("Which operation do you wish to perform");
-        Console.WriteLine("connect to a channel (c)");
-        Console.WriteLine("send a message to the channel (s)");
-        Console.WriteLine("exit (x)");
+        // URL of the SignalR hub
+        var hubUrl = "https://localhost:7230/chessgpthub";
 
-        string operation = Console.ReadLine();
-        return operation;
-    }
-    private static void Main(string[] args)
-    {
-        string user = "Kaiden";
-        string hubAddress = "https://localhost:7230/chessgpthub";
+        // Create a new connection to the hub
+        var connection = new HubConnectionBuilder()
+            .WithUrl(hubUrl)
+            .Build();
 
-        string operation = DrawMenu();
-
-        var signalRConnection = new SignalRConnection(hubAddress);
-
-        while (operation != "x")
+        // Subscribe to the "ReceiveMessage" event
+        connection.On<string>("ReceiveMessage", (message) =>
         {
-            switch (operation)
-            {
-                case "x":
-                    break;
+            Console.WriteLine($"Received message: {message}");
+        });
 
-                case "c":
-                    signalRConnection.ConnectToChannel(user);
-                    break;
+        try
+        {
+            // Start the connection
+            await connection.StartAsync();
 
-                case "d":
-                    break;
-            }
-            operation = DrawMenu();
+            // Send a test message
+            string testMessage = "This is a test message from the console app";
+            await connection.SendAsync("SendMessage", testMessage);
+
+            Console.WriteLine("Message sent successfully.");
+
+            // Wait for user input to stop the application
+            Console.ReadLine();
+
+            // Stop the connection
+            await connection.StopAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
         }
     }
 }
