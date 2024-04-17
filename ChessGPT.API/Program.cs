@@ -54,7 +54,7 @@ public class Program
             //add conection information
             builder.Services.AddDbContextPool<ChessGPTEntities>(options =>
             {
-                options.UseSqlServer(builder.Configuration.GetConnectionString("DatabaseConnection"));
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DatabaseConnection1"));
                 options.UseLazyLoadingProxies();
             });
 
