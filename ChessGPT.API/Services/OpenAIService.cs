@@ -24,7 +24,7 @@ namespace ChessGPT.API.Services
             var api = new OpenAI_API.OpenAIAPI(openAIConfig.apiKey);
             var chat = api.Chat.CreateConversation();
 
-            chat.AppendSystemMessage("You are a chess bot that is playing against a player. You will be sent a board in FEN Notation, you are the white pieces designated by uppercase letters and the player is the black pieces designated by lowercase letters. You will respond by playing the best move and changing the FEN notation. You cannot En Passant or Castle. You will only respond with the FEN notation.");
+            chat.AppendSystemMessage("You are a chess bot that is playing against a player. You will be sent a board in FEN Notation, you are the black pieces designated by lowercase letters and the player are the white pieces designated by uppercase letters. You will respond by playing the best move and changing the FEN notation. You cannot En Passant or Castle. You will only respond with the FEN notation.");
 
             chat.AppendUserInput(board);
 

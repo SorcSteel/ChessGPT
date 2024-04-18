@@ -37,19 +37,27 @@ namespace KB.DVDCentral.API.Controllers
             return new UserGameManager(options).LoadById(id);
         }
 
-        //[HttpPost("{rollback?}")]
-        //public int post([FromBody] UserGame userGame, bool rollback = false)
-        //{
-        //    try
-        //    {
-        //        return new UserGameManager(options).Insert(userGame, rollback);
-        //    }
-        //    catch (Exception)
-        //    {
+        /// <summary>
+        /// Inserts a user to a game and their color
+        /// </summary>
+        /// <param name="gameId"></param>
+        /// <param name="userId"></param>
+        /// <param name="color"></param>
+        /// <param name="rollback"></param>
+        /// <returns></returns>
+        [HttpPost("{rollback?}")]
+        public int post(Guid gameId, Guid userId, char color,  bool rollback = false)
+        {
+            try
+            {
+                return new UserGameManager(options).Insert(gameId, userId, color,  rollback);
+            }
+            catch (Exception)
+            {
 
-        //        throw;
-        //    }
-        //}
+                throw;
+            }
+        }
 
 
         /// <summary>
