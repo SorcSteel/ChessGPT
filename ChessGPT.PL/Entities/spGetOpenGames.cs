@@ -11,6 +11,5 @@ namespace ChessGPT.PL.Entities
         public Guid Id { get; set; }
         public Guid GameId { get; set; }
 
-
     }
 }
