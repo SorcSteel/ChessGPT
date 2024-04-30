@@ -9,9 +9,7 @@ namespace ChessGPT.PL.Entities
     public class spGetOpenGames : IEntity
     {
         public Guid Id { get; set; }
-        public Guid UserId { get; set; }
         public Guid GameId { get; set; }
-        public char Color { get; set; }
 
 
     }

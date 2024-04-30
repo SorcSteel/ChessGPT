@@ -25,7 +25,7 @@ namespace KB.DVDCentral.API.Controllers
         [HttpGet]
         public IEnumerable<UserGame> GetOpenGames()
         {
-            return (IEnumerable<UserGame>)new UserGameSPManager(options).Load();
+            return new UserGameSPManager(options).Load();
         }
     }
 }

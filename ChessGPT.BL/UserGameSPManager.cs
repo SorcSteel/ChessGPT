@@ -23,6 +23,7 @@ namespace ChessGPT.BL
                     .ForEach(row => rows.Add(
                         new UserGame
                         {
+                            Id = Guid.Empty,
                             GameId = row.GameId
                         }));
                 return rows;
