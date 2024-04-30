@@ -133,6 +133,7 @@ namespace ChessGPT.PL.Data
                   .HasForeignKey(d => d.GameId)
                   .OnDelete(DeleteBehavior.ClientSetNull)
                   .HasConstraintName("fk_tblUserGame_GameId");
+                modelBuilder.Entity<spGetOpenGames>().HasNoKey();
             });
 
             List<tblUserGame> UserGames = new List<tblUserGame>

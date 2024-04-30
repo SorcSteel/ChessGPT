@@ -109,7 +109,15 @@ namespace ChessGPT.PL.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_tblUserGame_UserId",
                 table: "tblUserGame",
-                column: "UserId");
+                column: "UserId"); 
+            migrationBuilder.Sql(@"CREATE PROCEDURE [dbo].[spGetOpenGames]
+                AS
+                    SELECT GameId
+                    FROM tblusergame
+                    GROUP BY GameId
+                    HAVING COUNT(DISTINCT UserId) = 1;
+ 
+                RETURN 0");
         }
 
         /// <inheritdoc />

@@ -96,6 +96,19 @@ namespace ChessGPT.BL
                 throw;
             }
         }
+
+        //public List<UserGame> LoadOpenGames() 
+        //{
+        //    try
+        //    {
+
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //        throw;
+        //    }
+        //}
         // Theres no need to update UserGame, It's either you're White or Black
         // Unless we're updating the players that are playing the game which makes little sense
     }
