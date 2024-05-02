@@ -22,15 +22,14 @@ namespace ChessGPT.BL.Test
             Assert.AreEqual(expected, userGames.Count);
         }
 
-        //[TestMethod]
-        //public void InsertTest()
-        //{
-        //    Guid userId = new UserManager(options).Load().FirstOrDefault().Id;
-        //    Guid gameId = new GameManager(options).Load().FirstOrDefault().Id;
+        [TestMethod]
+        public void InsertTest()
+        {
+            UserGame userGame = new UserGame { Id = Guid.NewGuid(), UserId = Guid.NewGuid(), GameId = Guid.NewGuid(), Color = 'b' };
 
-        //    int result = new UserGameManager(options).Insert(userId, gameId, 'b', true);
-        //    Assert.IsTrue(result > 0);
-        //}
+            int result = new UserGameManager(options).Insert(userGame, true);
+            Assert.IsTrue(result > 0);
+        }
 
         [TestMethod]
         public void DeleteTest()

@@ -70,11 +70,12 @@ namespace ChessGPT.BL
             }
         }
 
-        public int Insert(Guid userId, Guid gameId, char color, bool rollback = false)
+        public int Insert(UserGame userGame, bool rollback = false)
         {
             try
             {
-                tblUserGame row = new tblUserGame { Id = Guid.NewGuid(), UserId = userId, GameId = gameId, Color = color };
+                tblUserGame row = new tblUserGame { UserId =  userGame.UserId, GameId = userGame.GameId, Color = userGame.Color };
+                userGame.Id = row.Id;
                 return base.Insert(row, rollback);
 
             }
