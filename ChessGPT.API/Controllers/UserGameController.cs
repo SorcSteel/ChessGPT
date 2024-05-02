@@ -27,6 +27,15 @@ namespace KB.DVDCentral.API.Controllers
         {
             return new UserGameManager(options).Load();
         }
+        /// <summary>
+        /// Retrieves all UserGames That are Open.
+        /// </summary>
+
+        //[HttpGet]
+        //public IEnumerable<UserGame> GetOpenGames()
+        //{
+        //    return (IEnumerable<UserGame>)new UserGameSPManager(options).Load();
+        //}
 
         /// <summary>
         /// Retrieves a UserGame By Id.

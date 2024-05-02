@@ -22,6 +22,24 @@ namespace ChessGPT.PL.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("ChessGPT.PL.Entities.spGetOpenGames", b =>
+                {
+                    b.Property<string>("Color")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<Guid>("GameId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.ToTable("spGetOpenGames");
+                });
+
             modelBuilder.Entity("ChessGPT.PL.Entities.tblGame", b =>
                 {
                     b.Property<Guid>("Id")
@@ -50,27 +68,27 @@ namespace ChessGPT.PL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("d5e0db1c-85a1-4160-9bb7-4c28db12bf11"),
+                            Id = new Guid("337c82f3-bed7-4322-ae47-1bf720613b9b"),
                             GameBoard = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w",
                             GameName = "First Game",
                             GameState = "o",
-                            GameTime = new DateTime(2024, 3, 5, 23, 41, 29, 82, DateTimeKind.Local).AddTicks(5573)
+                            GameTime = new DateTime(2024, 4, 30, 2, 12, 17, 912, DateTimeKind.Local).AddTicks(6731)
                         },
                         new
                         {
-                            Id = new Guid("96349c24-a518-4487-a6ff-a2429ecf2576"),
+                            Id = new Guid("4f18cc52-d321-4ad9-9a3b-39b159852f59"),
                             GameBoard = "rnbqkbnr/pp1ppppp/8/2p5/4P3/5N2/PPPP1PPP/RNBQKB1R b",
                             GameName = "Second Game",
                             GameState = "o",
-                            GameTime = new DateTime(2024, 3, 5, 23, 41, 29, 82, DateTimeKind.Local).AddTicks(5616)
+                            GameTime = new DateTime(2024, 4, 30, 2, 12, 17, 912, DateTimeKind.Local).AddTicks(6778)
                         },
                         new
                         {
-                            Id = new Guid("fcd90fc6-ddf3-44d5-acda-c2c420e0a087"),
+                            Id = new Guid("9c2c0e5f-5828-4d46-af00-6b41bfd14c06"),
                             GameBoard = "4K3/4p3/Bk1p4/b4rP1/2R3p1/P3PP2/P3N3/5r2 w",
                             GameName = "Third Game",
                             GameState = "o",
-                            GameTime = new DateTime(2024, 3, 5, 23, 41, 29, 82, DateTimeKind.Local).AddTicks(5617)
+                            GameTime = new DateTime(2024, 4, 30, 2, 12, 17, 912, DateTimeKind.Local).AddTicks(6781)
                         });
                 });
 
@@ -106,7 +124,7 @@ namespace ChessGPT.PL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("4882ba82-2809-4f40-848d-5230a1d398de"),
+                            Id = new Guid("271695df-c291-49ab-8953-242bdf83a40e"),
                             FirstName = "Kaiden",
                             IsComputer = false,
                             LastName = "Brunke",
@@ -115,7 +133,7 @@ namespace ChessGPT.PL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("93c75571-43c9-4085-8736-e55b02df011b"),
+                            Id = new Guid("e96b63e5-75fa-40f4-8ae7-e5aa3ff8227d"),
                             FirstName = "Logan",
                             IsComputer = false,
                             LastName = "Vang",
@@ -124,7 +142,7 @@ namespace ChessGPT.PL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("1ce9a108-70e3-4c1c-a89c-4731713698a8"),
+                            Id = new Guid("fc9b03e0-432c-4f5e-8604-423c1a90d03d"),
                             FirstName = "AI",
                             IsComputer = true,
                             LastName = "Robot",
@@ -160,45 +178,45 @@ namespace ChessGPT.PL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("8692bb05-83dd-4f0d-b2bf-8d1507690109"),
+                            Id = new Guid("ed7371bc-5dea-41e5-a944-089d872bca28"),
                             Color = "w",
-                            GameId = new Guid("d5e0db1c-85a1-4160-9bb7-4c28db12bf11"),
-                            UserId = new Guid("4882ba82-2809-4f40-848d-5230a1d398de")
+                            GameId = new Guid("337c82f3-bed7-4322-ae47-1bf720613b9b"),
+                            UserId = new Guid("271695df-c291-49ab-8953-242bdf83a40e")
                         },
                         new
                         {
-                            Id = new Guid("76cbbef8-1d4b-45dd-a2a1-5b0d593c89a4"),
+                            Id = new Guid("76270a90-78b1-4101-bbcb-67c5fadcce64"),
                             Color = "b",
-                            GameId = new Guid("d5e0db1c-85a1-4160-9bb7-4c28db12bf11"),
-                            UserId = new Guid("93c75571-43c9-4085-8736-e55b02df011b")
+                            GameId = new Guid("337c82f3-bed7-4322-ae47-1bf720613b9b"),
+                            UserId = new Guid("e96b63e5-75fa-40f4-8ae7-e5aa3ff8227d")
                         },
                         new
                         {
-                            Id = new Guid("212476c1-3fa4-4648-9d9c-1cdbb199f59a"),
+                            Id = new Guid("41f09a0b-7f4c-4258-808f-3929ec929556"),
                             Color = "b",
-                            GameId = new Guid("96349c24-a518-4487-a6ff-a2429ecf2576"),
-                            UserId = new Guid("4882ba82-2809-4f40-848d-5230a1d398de")
+                            GameId = new Guid("4f18cc52-d321-4ad9-9a3b-39b159852f59"),
+                            UserId = new Guid("271695df-c291-49ab-8953-242bdf83a40e")
                         },
                         new
                         {
-                            Id = new Guid("ad8f6a22-c3d7-41a9-8872-faf17e0415db"),
+                            Id = new Guid("6799f611-d3a9-4e59-acd0-4e8e1a6ce4db"),
                             Color = "w",
-                            GameId = new Guid("96349c24-a518-4487-a6ff-a2429ecf2576"),
-                            UserId = new Guid("93c75571-43c9-4085-8736-e55b02df011b")
+                            GameId = new Guid("4f18cc52-d321-4ad9-9a3b-39b159852f59"),
+                            UserId = new Guid("e96b63e5-75fa-40f4-8ae7-e5aa3ff8227d")
                         },
                         new
                         {
-                            Id = new Guid("1f3db302-079f-424b-93aa-997b7d1ac96b"),
+                            Id = new Guid("a3c5158b-942b-49a4-aed5-50a65c4cdd0d"),
                             Color = "w",
-                            GameId = new Guid("fcd90fc6-ddf3-44d5-acda-c2c420e0a087"),
-                            UserId = new Guid("1ce9a108-70e3-4c1c-a89c-4731713698a8")
+                            GameId = new Guid("9c2c0e5f-5828-4d46-af00-6b41bfd14c06"),
+                            UserId = new Guid("fc9b03e0-432c-4f5e-8604-423c1a90d03d")
                         },
                         new
                         {
-                            Id = new Guid("c1602f17-23a9-4ef9-9461-c2eb7cd9a912"),
+                            Id = new Guid("d1c3bae6-08ed-4003-9913-cfe8a1a9d2ba"),
                             Color = "b",
-                            GameId = new Guid("fcd90fc6-ddf3-44d5-acda-c2c420e0a087"),
-                            UserId = new Guid("4882ba82-2809-4f40-848d-5230a1d398de")
+                            GameId = new Guid("9c2c0e5f-5828-4d46-af00-6b41bfd14c06"),
+                            UserId = new Guid("271695df-c291-49ab-8953-242bdf83a40e")
                         });
                 });
 

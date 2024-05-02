@@ -1,8 +1,7 @@
-﻿
-using ChessGPT.API.Configurations;
+﻿using ChessGPT.BL.Services;
 using Microsoft.Extensions.Options;
 
-namespace ChessGPT.API.Services
+namespace ChessGPT.BL
 {
     public class OpenAIService : IOpenAIService
     {

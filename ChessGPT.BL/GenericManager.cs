@@ -43,6 +43,23 @@ namespace ChessGPT.BL
             }
         }
 
+        public List<T> Load(string storedproc)
+        {
+            try
+            {
+                return new ChessGPTEntities(options)
+                    .Set<T>()
+                    .FromSqlRaw($"exec {storedproc}")
+                    .ToList<T>();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public T LoadById(Guid id)
         {
             try

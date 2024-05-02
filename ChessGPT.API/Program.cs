@@ -1,7 +1,7 @@
 using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
-using ChessGPT.API.Configurations;
-using ChessGPT.API.Services;
+using ChessGPT.BL;
+using ChessGPT.BL.Services;
 using ChessGPT.PL.Data;
 using KB.ChessGPT.API.Hubs;
 using Microsoft.EntityFrameworkCore;
@@ -54,7 +54,7 @@ public class Program
             //add conection information
             builder.Services.AddDbContextPool<ChessGPTEntities>(options =>
             {
-                options.UseSqlServer(builder.Configuration.GetConnectionString("DatabaseConnection1"));
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DatabaseConnection"));
                 options.UseLazyLoadingProxies();
             });
 
