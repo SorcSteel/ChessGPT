@@ -50,6 +50,8 @@ namespace ChessGPT.BL
                 return new ChessGPTEntities(options)
                     .Set<T>()
                     .FromSqlRaw($"exec {storedproc}")
+                    .ToList<T>()
+                    .OrderBy(x => x.Id)
                     .ToList<T>();
 
             }
