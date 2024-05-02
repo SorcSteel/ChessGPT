@@ -28,5 +28,17 @@ namespace KB.DVDCentral.API.Controllers
         {
             return new UserGameSPManager(options).LoadOpenGames();
         }
+
+        /// <summary>
+        /// Retrieves open games by User Id.
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns>List</returns>
+
+        [HttpGet("{userId}")]
+        public IEnumerable<Game> GetOpenGamesByUserId(Guid userId)
+        {
+            return new GameManager(options).LoadOpenGamesByUserId(userId);
+        }
     }
 }

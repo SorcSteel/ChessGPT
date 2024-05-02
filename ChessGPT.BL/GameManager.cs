@@ -1,6 +1,7 @@
 ﻿using ChessGPT.BL.Models;
 using ChessGPT.PL.Data;
 using ChessGPT.PL.Entities;
+using Humanizer.Localisation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Logging;
@@ -70,6 +71,44 @@ namespace ChessGPT.BL
             catch (Exception)
             {
 
+                throw;
+            }
+        }
+
+        public List<Game> LoadOpenGamesByUserId(Guid userId)
+        {
+            try
+            {
+                using (ChessGPTEntities dc = new ChessGPTEntities(options))
+                {
+                    List<Game> games = new List<Game>();
+
+                    var results = (from g in dc.tblGames
+                                   join ug in dc.tblUserGames on g.Id equals ug.GameId
+                                   where g.GameState == 'o' && ug.UserId == userId
+                                   select new
+                                   {
+                                       Id = g.Id,
+                                       GameName = g.GameName,
+                                       GameTime = g.GameTime,
+                                       GameBoard = g.GameBoard,
+                                       GameState = g.GameState
+                                   }).Distinct().ToList();
+
+                    results.ForEach(g => games.Add(new Game
+                    {
+                        Id = g.Id,
+                        GameName = g.GameName,
+                        GameTime = g.GameTime,
+                        GameBoard = g.GameBoard,
+                        GameState = g.GameState
+                    }));
+
+                    return games.OrderBy(g => g.Id).ToList();
+                }
+            }
+            catch (Exception)
+            {
                 throw;
             }
         }
