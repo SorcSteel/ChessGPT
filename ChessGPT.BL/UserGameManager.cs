@@ -24,7 +24,7 @@ namespace ChessGPT.BL
                         new UserGame
                         {
                             Id = d.Id,
-                            UserId = d.Id,
+                            UserId = d.UserId,
                             GameId = d.GameId,
                             Color = d.Color,
                         }));

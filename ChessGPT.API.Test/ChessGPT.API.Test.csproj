@@ -8,7 +8,6 @@
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
 	<PreserveCompilationContext>true</PreserveCompilationContext>
-	<BaseOutputPath>C:\Users\logan\OneDrive\Desktop\Projects\ChessGPT\Chess.GPT.API.Test\bin\Debug\net8.0</BaseOutputPath>
   </PropertyGroup>
 
   <ItemGroup>

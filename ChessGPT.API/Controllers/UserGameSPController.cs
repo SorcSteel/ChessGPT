@@ -1,6 +1,7 @@
 ﻿using ChessGPT.BL;
 using ChessGPT.BL.Models;
 using ChessGPT.PL.Data;
+using ChessGPT.PL.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -23,9 +24,9 @@ namespace KB.DVDCentral.API.Controllers
         /// </summary>
 
         [HttpGet]
-        public IEnumerable<UserGame> GetOpenGames()
+        public IEnumerable<spGetOpenGames> GetOpenGames()
         {
-            return (IEnumerable<UserGame>)new UserGameSPManager(options).Load();
+            return new UserGameSPManager(options).LoadOpenGames();
         }
     }
 }
