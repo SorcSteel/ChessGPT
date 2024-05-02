@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace KB.DVDCentral.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/Hi")]
     [ApiController]
     public class GameController : ControllerBase
     {
@@ -37,6 +37,18 @@ namespace KB.DVDCentral.API.Controllers
         public Game Get(Guid id)
         {
             return new GameManager(options).LoadById(id);
+        }
+
+        /// <summary>
+        /// Retrieves open games by User Id.
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns>List</returns>
+
+        [HttpGet("{userId}")]
+        public IEnumerable<Game> GetOpenGamesByUserId(Guid userId)
+        {
+            return new GameManager(options).LoadOpenGamesByUserId(userId);
         }
 
         /// <summary>
