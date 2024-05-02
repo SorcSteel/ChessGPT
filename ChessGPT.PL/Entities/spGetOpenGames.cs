@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace ChessGPT.PL.Entities
 {
-    public class spGetOpenGames : IEntity
+    public class spGetOpenGames 
     {
-        public Guid Id { get; set; }
         public Guid GameId { get; set; }
 
     }
