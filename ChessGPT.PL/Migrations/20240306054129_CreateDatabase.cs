@@ -112,10 +112,11 @@ namespace ChessGPT.PL.Migrations
                 column: "UserId"); 
             migrationBuilder.Sql(@"CREATE PROCEDURE [dbo].[spGetOpenGames]
                 AS
-                    select distinct gameid 
+                    select * from tblGame
+                    where id in (select distinct gameid as Id
                     from tblusergame
                     group by gameid
-                    having count(color) = 1;
+                    having count(color) = 1);
                 RETURN 0");
         }
 

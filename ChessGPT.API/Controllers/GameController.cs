@@ -1,6 +1,7 @@
 ﻿using ChessGPT.BL;
 using ChessGPT.BL.Models;
 using ChessGPT.PL.Data;
+using ChessGPT.PL.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -27,6 +28,7 @@ namespace KB.DVDCentral.API.Controllers
         {
             return new GameManager(options).Load();
         }
+
 
         /// <summary>
         /// Retrieves a Game By Id.
