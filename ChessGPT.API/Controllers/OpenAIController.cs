@@ -1,4 +1,4 @@
-﻿using ChessGPT.API.Services;
+﻿using ChessGPT.BL;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

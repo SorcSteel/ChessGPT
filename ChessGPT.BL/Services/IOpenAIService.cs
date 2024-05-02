@@ -1,4 +1,4 @@
-﻿namespace ChessGPT.API.Services
+﻿namespace ChessGPT.BL
 {
     public interface IOpenAIService
     {
