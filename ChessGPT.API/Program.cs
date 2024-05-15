@@ -60,8 +60,8 @@ public class Program
 
         builder.Services.AddCors(options =>
         {
-            options.AddPolicy("AllowSpecificOrigin",
-                builder => builder.WithOrigins("https://700233885.itch.io")
+            options.AddPolicy("AllowAll",
+                builder => builder.WithOrigins()
                                   .AllowAnyHeader()
                                   .AllowAnyMethod());
         });
@@ -81,7 +81,7 @@ public class Program
 
             //app.MapControllers();
 
-            app.UseCors("AllowSpecificOrigin");
+            app.UseCors("AllowAll");
 
             app.UseEndpoints(endpoints =>
             {
