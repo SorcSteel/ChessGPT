@@ -58,7 +58,15 @@ public class Program
                 options.UseLazyLoadingProxies();
             });
 
-            var app = builder.Build();
+        builder.Services.AddCors(options =>
+        {
+            options.AddPolicy("AllowSpecificOrigin",
+                builder => builder.WithOrigins("https://700233885.itch.io")
+                                  .AllowAnyHeader()
+                                  .AllowAnyMethod());
+        });
+
+        var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -72,6 +80,8 @@ public class Program
             app.UseAuthorization();
 
             //app.MapControllers();
+
+            app.UseCors("AllowSpecificOrigin");
 
             app.UseEndpoints(endpoints =>
             {
